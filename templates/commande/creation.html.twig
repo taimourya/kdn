@@ -1,0 +1,76 @@
+{% extends 'base_vide.html.twig' %}
+
+{% block title %}Creation De Commande{% endblock %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="/css/steps.css">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="body_step shadow-lg p-3 mb-5 bg-light rounded">
+            <div class="header-step">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="">
+                            <div class="step {% if etape == 1 %}step_active{% endif %} shadow-lg p-3 mb-5 rounded">
+                                <h4>Etape 1</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="">
+                            <div class="step {% if etape == 2 %}step_active{% endif %} shadow-lg p-3 mb-5 rounded">
+                                <h4>Etape 2</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="">
+                            <div class="step {% if etape == 3 %}step_active{% endif %} shadow-lg p-3 mb-5 rounded">
+                                <h4>Etape 3</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="container_step {% if etape == 1 %}pb-5{% endif %}">
+                <h1 class="text-center">{{ title_form }}</h1>
+                {{form_start(form)}}
+        
+                {{form_widget(form)}}
+
+                {% if etape >= 2 %}
+                    <a href="{{ path('commande_annuler', {'commande':commande.id}) }}" class="btn btn-danger">
+                        <i class="fas fa-window-close"></i>
+                        Annuler
+                    </a>
+                {% endif %}
+                <button type="submit" class="btn btn-primary float-right">
+                    
+                    {% if etape == 3 %}
+                        Validation
+                        <i class="fas fa-check"></i>
+                    {% else %}
+                        Etape Suivante
+                        <i class="fas fa-forward"></i>
+                    {% endif %}
+                </button>
+
+                {{form_end(form)}}
+            </div>
+        </div>
+        
+    </div>
+
+    
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+    <script src="/script/jquery.steps.min.js"></script>
+{% endblock %}

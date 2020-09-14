@@ -1,0 +1,25 @@
+
+.iCard-shadow, .shadow-content 
+{
+    -webkit-box-shadow: 0 .5rem 1rem rgba(43,42,53,.075)!important;
+    box-shadow: 0 .5rem 1rem rgba(43,42,53,.075)!important;
+}
+.iCard-shadow img
+{
+    height: 200px;
+}
+
+.template
+{
+    font-family: sans-serif;
+}
+
+.template img
+{
+    height: 450px;
+    width: 500px;
+}
+.template .price
+{
+    color: brown;
+}

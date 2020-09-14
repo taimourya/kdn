@@ -1,0 +1,45 @@
+{% extends 'base_hero.html.twig' %}
+
+{% block title %}template {{ template.name }}{% endblock %}
+
+{% block title_hero %}template {{ template.name }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="/css/template.css">
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="container mt-5 mb-5">
+        <div class="row template">
+            <div class="col-md-6">
+                <img src="{{ asset('images/uploads/template/' ~ template.image) }}"  class="img-fluid"  alt="{{  template.name }}" title="{{  template.description }}"> 
+            </div>
+            <div class="col-md-6">
+                <div class="information mb-5">
+                    <h2 class="name">{{ template.name }}</h2>
+                    <h1 class="price">A partire de {{ template.service.price }} DH</h1>
+                    <p class="text-justify description" style="font-size: 1.2em;">{{  template.description }}</p>
+                </div>
+                <div class="option">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a href="{{  template.getPreviewUrl() }}" class="btn btn-primary" target="_blank">
+                                <i class="fas fa-eye"></i>
+                                Prévisualiser 
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="{{ path('commande_creation1', {'template':template.id}) }}" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart"></i>
+                                Passer la Commande
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

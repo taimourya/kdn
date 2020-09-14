@@ -1,0 +1,41 @@
+<h1>commande effectuée avec succes</h1>
+<h3>details</h3>
+<p>Nom : {{ commande.getClientLastname() }}</p>
+<p>prenom : {{ commande.getClientFirstname() }}</p>
+<p>email : {{ commande.email }}</p>
+<p>téléphone : {{ commande.phone }}</p>
+<p>Description : {{ commande.description }}</p>
+<p>
+    avec hebergement : 
+    {% if commande.getWithHost == 1 %}
+        Oui
+    {% else %}
+        Non
+    {% endif %}
+</p>
+<p>
+    maitenance : 
+    {% if commande.getWithMaintenance == 1 %}
+        2 mois
+    {% else %}
+        2 semaine
+    {% endif %}
+</p>
+<p>
+    newsletter
+    {% if commande.getWithNewsletter == 1 %}
+        Oui
+    {% else %}
+        Non
+    {% endif %}
+</p>
+<p>
+    Total : {{ total }} DH
+</p>
+<p>Nous vous contacterons dans les 24 heurs qui suivent pour la finalisation de la commande</p>
+
+
+
+<p><a href="{{ absolute_url(path('commande_show', {'commande':commande.id})) }}">Voir la commande</a></p>
+<img src="{{ absolute_url(asset('/images/logo.png')) }}" alt="{{ absolute_url(asset('/images/logo.png')) }}">
+                    

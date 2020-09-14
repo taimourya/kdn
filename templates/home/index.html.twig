@@ -1,0 +1,302 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agence Création de site Internet, Agence Web Casablanca Maroc, site blog, site Ecommerce, site vitrine, site agence, site businesse, developpement web.{% endblock %}
+{% block menu_home %}
+    active
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="/css/pircing_service.css">
+{% endblock %}
+
+{% block body %}
+
+
+    <!-- si un message est envoyer via contact us -->
+    
+    <!-- 1548585 contact effectue -->
+    {% if message_recu == 1548585 %}
+        <div class="alert alert-success fixed-bottom text-center" id="message_alert" role="alert" style="height: 70px; margin-bottom: 0; font-size: 1.3em; opacity: 0.8;">
+            Votre message est envoyée !
+        </div>
+    <!-- 882528 abonnement effectue -->
+    {% elseif message_recu == 882528 %}
+        <div class="alert alert-success fixed-bottom text-center" id="message_alert" role="alert" style="height: 70px; margin-bottom: 0; font-size: 1.3em; opacity: 0.8;">
+            Vous êtes désormais abonné(e) à notre newsletter
+        </div>
+    {% endif %}
+
+    <script>
+        setTimeout(
+        function() 
+        {
+            $("#message_alert").css('display', 'none');
+        }, 3000);
+    </script>
+    
+
+    <!-- Services section starts here -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-xl-5 col-lg-6 col-md-8">
+                    <div class="section-title text-center title-ex1">
+                        <h2>Service</h2>
+                        <p>Choisisez l'option qui vous convient</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Pricing Table starts --><!-- Pricing Table starts -->
+            <div class="row mb-4">
+                {% set i = 1 %}
+                {% for service in services %}
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
+                            
+                            <div class="price-card {% if i % 2 == 0 %}featured{% endif %}">
+                                <h2>{{ service.name}}</h2>
+                                <p>{{ service.description }}</p>
+                                <p class="price"><span>{{ service.price }} + </span></p>
+                                <ul class="pricing-offers">
+                                    <li>
+                                        {% if service.getPageNumber == 0 %}
+                                            Nombre de page au choix
+                                        {% else %}
+                                            {{ service.getPageNumber }} page
+                                        {% endif %}    
+                                    </li>
+                                    {% for carac in service.getCaracteristiques() %}
+                                        <li>{{ carac.libele }}</li>
+                                    {% endfor %}
+
+                                </ul>
+                                <a href="{{ path('template_catalogue', {'service':service.id}) }}" class="btn btn-primary btn-mid">Details</a>
+                            </div>
+                        </div>
+                    {% set i = i + 1 %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+        <!-- Services section ends here -->
+        <!-- About Us section starts here -->
+        <section id="About">
+            <div class="container">
+                <div class="about-wrapper">
+                    <h2>About Us</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+        </section>
+        <!-- About Us section ends here -->
+        <!-- Portfolio section starts here -->
+        <section id="Portfolio">
+            <div class="container">
+                <div class="block-heading">
+                    <h2>Portfolio</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+                <div class="portfolio-wrapper clearfix">
+                    <a class="each-portfolio" data-fancybox="gallery" href="images/p-one.jpg">
+                    <img src="images/p-one.jpg" alt="p-one">
+                    <div class="hover-cont-wrap">
+                        <div class="hover-cont-block">
+                           <h5 class="p-title">Title</h5>
+                            <div class="p-desc">
+                                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                                <div class="icon-div"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                   </a>
+                    <a class="each-portfolio" data-fancybox="gallery" href="images/p-two.jpg">
+                    <img src="images/p-two.jpg" alt="p-one">
+                    <div class="hover-cont-wrap">
+                        <div class="hover-cont-block">
+                           <h5 class="p-title">Title</h5>
+                           <div class="p-desc">
+                                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                                <div class="icon-div"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                   </a>
+                    <a class="each-portfolio" data-fancybox="gallery" href="images/p-three.jpg">
+                    <img src="images/p-three.jpg" alt="p-one">
+                    <div class="hover-cont-wrap">
+                       <div class="hover-cont-block">
+                           <h5 class="p-title">Title</h5>
+                           <div class="p-desc">
+                                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                                <div class="icon-div"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                   </a>
+                    <a class="each-portfolio" data-fancybox="gallery" href="images/p-four.jpg">
+                    <img src="images/p-four.jpg" alt="p-one">
+                    <div class="hover-cont-wrap">
+                        <div class="hover-cont-block">
+                           <h5 class="p-title">Title</h5>
+                           <div class="p-desc">
+                                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                                <div class="icon-div"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                   </a>
+                    <a class="each-portfolio" data-fancybox="gallery" href="images/p-five.jpg">
+                    <img src="images/p-five.jpg" alt="p-one">
+                    <div class="hover-cont-wrap">
+                        <div class="hover-cont-block">
+                           <h5 class="p-title">Title</h5>
+                           <div class="p-desc">
+                                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                                <div class="icon-div"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                   </a>
+                    <a class="each-portfolio" data-fancybox="gallery" href="images/p-six.jpg">
+                    <img src="images/p-six.jpg" alt="p-one">
+                    <div class="hover-cont-wrap">
+                        <div class="hover-cont-block">
+                           <h5 class="p-title">Title</h5>
+                           <div class="p-desc">
+                                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                                <div class="icon-div"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                   </a>
+                    <a class="each-portfolio" data-fancybox="gallery" href="images/p-one.jpg">
+                    <img src="images/p-one.jpg" alt="p-one">
+                    <div class="hover-cont-wrap">
+                        <div class="hover-cont-block">
+                           <h5 class="p-title">Title</h5>
+                           <div class="p-desc">
+                                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                                <div class="icon-div"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                   </a>
+                    <a class="each-portfolio" data-fancybox="gallery" href="images/p-two.jpg">
+                    <img src="images/p-two.jpg" alt="p-one">
+                    <div class="hover-cont-wrap">
+                        <div class="hover-cont-block">
+                           <h5 class="p-title">Title</h5>
+                           <div class="p-desc">
+                                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                                <div class="icon-div"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                   </a>
+                    <a class="each-portfolio" data-fancybox="gallery" href="images/p-three.jpg">
+                    <img src="images/p-three.jpg" alt="p-one">
+                    <div class="hover-cont-wrap">
+                        <div class="hover-cont-block">
+                            <h5 class="p-title">Title</h5>
+                            <div class="p-desc">
+                                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                                <div class="icon-div"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                   </a>
+                </div>
+            </div>
+        </section>
+        <!-- Portfolio section ends here -->
+        <section id="Testimonial">
+          <div class="testimonial-wrap">
+          <div class="container">
+            <div class="block-heading">
+              <h2>What Clients Say About Us</h2>
+            </div>
+            <ul class="testimonial-slider">
+              <li>" I would like to thank Click and the team for the fantastic work<br> on content writing for my site. "</li>
+              <li>" I'd say that the team is excellent and it is some of the best service<br> I have received both online and offline in a long time. "</li>
+              <li>" It's been great working with you. The content is also great. I can certainly recommend your<br> services to others as cost effective services. "</li>
+            </ul>
+          </div>
+        </div>
+        </section>
+        <!-- Contact us section starts here -->
+        <section id="ContactUs">
+            <div class="container contact-container">
+                <h3 class="contact-title">Contactez nous</h3>
+                <div class="contact-outer-wrapper">
+                    <div class="address-block">
+                        <p class="add-title">Contactez nous</p>
+                        <div class="c-detail">
+                            <span class="c-icon"><i class="fa fa-phone" aria-hidden="true"></i></span> <span class="c-info">+212643334135</span>
+                        </div>
+                        <div class="c-detail">
+                            <span class="c-icon"><i class="fa fa-envelope" aria-hidden="true"></i></span> <span class="c-info">taimouriya@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="form-wrap">
+                        <p class="add-title">Envoyez nous un message</p>
+
+                        {{ form_start(contact_form) }}
+                            <div class="fname floating-label">
+                                {{ form_row(contact_form.lastname) }}
+                            </div>
+                            <div class="email floating-label">
+                                {{ form_row(contact_form.firstname) }}
+                            </div>
+                            <div class="contact floating-label">
+                                {{ form_row(contact_form.email) }}
+                            </div>
+                            <div class="company floating-label">
+                                {{ form_row(contact_form.subject) }}
+                            </div>
+                            <div class="user-msg floating-label">
+                                {{ form_row(contact_form.message) }}
+                            </div>
+                            <div class="submit-btn">
+                                <button type="submit">Submit</button>
+                            </div>
+                        {{ form_end(contact_form) }}
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact us section ends here -->
+
+
+
+        <!-- Subscribe to newsletter -->
+        <section class="container mb-5">
+            <div class="d-flex justify-content-center contact-container">
+                <div class="form-wrap newsletter">
+                    <style>
+                        .newsletter input
+                        {
+                            font-size: 1.3em;
+                        }
+                        .newsletter label
+                        {
+                            font-size: 1.1em;
+                        }
+                    </style>
+
+                    <h3 class="add-title">Abonnee vous a notre newsletter</h3>
+                    {{ form_start(subscriber_form) }}
+
+                    
+                    {{ form_widget(subscriber_form) }}
+                    
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                    </div>
+                    {{ form_end(subscriber_form) }}
+                </div>
+            </div>
+        </section>
+        <!-- End Subscribe to newsletter -->
+
+
+{% endblock %}

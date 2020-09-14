@@ -1,0 +1,44 @@
+body 
+{
+    font-family: 'Karla', sans-serif;
+    background-color: #f2f3f8; 
+}
+.body_step
+{
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 50px;
+}
+.step 
+{
+    color: rgba(79, 181, 224, 0.884);
+    text-align: center;
+    background: white;
+}
+.step h4
+{
+    font-size: 1.2em;
+}
+.step_active
+{
+    background: rgb(211, 233, 247);
+    color: rgb(0, 0, 0);
+}
+.container_step h1 
+{
+    font-size: 20px;
+}
+@media (min-width: 768px) 
+{
+    .container_step h1 
+    {
+        font-size: 25px;
+    }
+}
+@media (min-width: 992px) 
+{
+    .container_step h1 
+    {
+        font-size: 35px;
+    }
+}

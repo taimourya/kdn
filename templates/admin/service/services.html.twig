@@ -1,0 +1,76 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Admin DashBoard{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item active">Services</li>
+{% endblock %}
+
+{% block body %}
+
+
+
+    <div class="card mb-4 mt-5">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+            Liste des services
+            <a href="{{ path('admin_addService') }}" class="btn btn-primary float-right">
+                <i class="fas fa-plus"></i>
+                Ajouter un service
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prix</th>
+                            <th>Nombre de page</th>
+                            <th>Ajouter</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prix</th>
+                            <th>Nombre de page</th>
+                            <th>Ajouter</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for service in services %}
+                            <tr>
+                                <td>{{ service.name}}</td>
+                                <td>{{ service.price }}</td>
+                                <td>{{ service.getPageNumber }}</td>
+                                <td class="text-center">
+                                    <a href="{{ path('admin_serviceaddtemplate', {'service':service.id}) }}" class="btn btn-primary">
+                                        <i class="fas fa-file-alt"></i>
+                                        template
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="{{ path('admin_editService', {'service':service.id}) }}" class="btn btn-warning">
+                                        <i class="far fa-edit"></i>
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="{{ path('admin_removeService', {'service':service.id}) }}" class="btn btn-danger" onclick="return confirm('etes vous sure?')">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Admin DashBoard{% endblock %}
+
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item active">Newsletter</li>
+{% endblock %}
+
+
+{% block body %}
+
+    
+    
+
+    <div class="card mb-4 mt-5">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+            Liste des abonnés
+            <a href="{{ path('admin_addNewsletter') }}" class="btn btn-primary float-right">
+                <i class="fas fa-plus"></i>
+                Ajouter une newsletter
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Objet</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Objet</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for newsletter in newsletters %}
+                            <tr>
+                                <td>{{ newsletter.subject }}</td>
+                                <td>
+                                    <a href="{{ path('admin_newsletter_send', {'newsletter':newsletter.id}) }}" class="btn btn-primary">
+                                        <i class="fas fa-check"></i>
+                                        Envoyer
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('admin_editNewsletter', {'newsletter':newsletter.id}) }}" class="btn btn-warning">
+                                        <i class="far fa-edit"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('admin_removeNewsletter', {'newsletter':newsletter.id}) }}" class="btn btn-danger" onclick="return confirm('etes vous sure?')">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+
+{% endblock %}

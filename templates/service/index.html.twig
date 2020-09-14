@@ -1,0 +1,61 @@
+{% extends 'base_hero.html.twig' %}
+
+{% block title %}Services {% endblock %}
+
+{% block title_hero %}Services{% endblock %}
+
+{% block menu_service %}
+    active
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="/css/pircing_service.css">
+{% endblock %}
+
+{% block body %}
+
+<!-- Services section starts here -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-xl-5 col-lg-6 col-md-8">
+                    <div class="section-title text-center title-ex1">
+                        <h2>Service</h2>
+                        <p>Choisisez l'option qui vous convient</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Table starts -->
+            <div class="row mb-4">
+                {% set i = 1 %}
+                {% for service in services %}
+                        <div class="col-md-4 col-sm-6 col-xs-12 mb-4">
+                            
+                            <div class="price-card {% if i % 2 == 0 %}featured{% endif %}">
+                                <h2>{{ service.name}}</h2>
+                                <p>{{ service.description }}</p>
+                                <p class="price"><span>{{ service.price }} + </span></p>
+                                <ul class="pricing-offers">
+                                    <li>
+                                        {% if service.getPageNumber == 0 %}
+                                            Nombre de page au choix
+                                        {% else %}
+                                            {{ service.getPageNumber }} page
+                                        {% endif %}    
+                                    </li>
+                                    {% for carac in service.getCaracteristiques() %}
+                                        <li>{{ carac.libele }}</li>
+                                    {% endfor %}
+
+                                </ul>
+                                <a href="{{ path('template_catalogue', {'service':service.id}) }}" class="btn btn-primary btn-mid">Details</a>
+                            </div>
+                        </div>
+                    {% set i = i + 1 %}
+                {% endfor %}
+            </div>
+
+    </section>
+    
+{% endblock %}

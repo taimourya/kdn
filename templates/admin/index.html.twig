@@ -1,0 +1,74 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Admin DashBoard{% endblock %}
+
+{% block body %}
+
+
+    <div class="row mt-5">
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-body">Visiteurs</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <p>{{ nombre_visiteur }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body">Commandes Valider</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <p>{{ nombre_commande_valider }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-warning text-white mb-4">
+                <div class="card-body">Commandes en attente</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <p>{{ nombre_commande_attente }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-danger text-white mb-4">
+                <div class="card-body">Commandes Annuler</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <p>{{ nombre_commande_annuler }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-dark text-white mb-4">
+                <div class="card-body">Abonnés</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <p>{{ nombre_subscriber }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-secondary text-white mb-4">
+                <div class="card-body">Messages recu</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <p>{{ nombre_contact }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-info text-white mb-4">
+                <div class="card-body">Argent Gagner</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <p>{{ argent_gagner }} DH</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            
+        </div>
+    </div>
+
+
+{% endblock %}

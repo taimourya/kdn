@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        <!-- favicons -->
+        <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" href="/images/logo_mini.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+        <!-- favicons -->
+        <!-- Font Awesome icons (free version)-->
+        <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link rel="stylesheet" type="text/css" href="/css/custom-responsive-style.css">
+        <link href="//fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+
+    <section id="MainContainer">
+        <!-- Header starts here -->
+        <header id="Header">
+            <nav class="main-navigation">
+                <div class="container clearfix">
+                    <div class="site-logo-wrap">
+                        <a class="logo" href="#"><span style="letter-spacing: 5px; font-size: 1.8em;  text-shadow: 2px 2px black;"><img src="/images/logo.png" alt="KDA-LOGO" style="width: 200px; height: 50px"></span></a>
+                    </div>
+                    <a class="menu-trigger hidden-lg-up" onclick="return false;"><span>&nbsp;</span></a>
+                    <div class="main-menu hidden-md-down">
+                        <ul class="menu-list">
+                            <li><a class="nav-link {% block menu_home %}{% endblock %}" href="{{ path('home')}}">Home</a></li>
+                            <li><a class="nav-link {% block menu_service %}{% endblock %}" href="{{ path('services')}}">Services</a></li>
+                            <li><a class="nav-link {% block menu_about %}{% endblock %}" href="{{ path('about')}}">About</a></li>
+                            <li><a class="nav-link {% block menu_contact %}{% endblock %}" href="{{ path('contact')}}">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mobile-menu hidden-lg-up pt-4">
+                    <ul class="mobile-menu-list">
+                            <li><a class="nav-link" href="{{ path('home')}}">Home</a></li>
+                            <li><a class="nav-link" href="{{ path('services')}}">Services</a></li>
+                            <li><a class="nav-link" href="{{ path('about')}}">About</a></li>
+                            <li><a class="nav-link" href="{{ path('contact')}}">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Header ends here -->
+
+        <!-- Banner starts here -->
+        <section id="HeroBanner">
+            <div class="hero-content">
+                <h1>KendevArt</h1>
+                <p>Agence De Creation De Site Web A Prix Raisonable</p>
+                <a href="{{ path('services')}}" class="hero-cta">Voir Nos Services</a>
+            </div>
+        </section>
+        <!-- Banner ends here -->
+
+
+
+
+
+        {% block body %}{% endblock %}
+
+
+        <!-- Footer section starts here -->
+        <footer id="Footer">
+            <div class="container">
+                <div class="social-share">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+                <div class="footer-logo-wrap">
+                    Design Studio &copy; 2018. Designed by <a href="https://www.position2.com/">Position2</a>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer section ends here -->
+
+
+    </section>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <script type="text/javascript" src="/script/all-plugins.js"></script>
+        <script type="text/javascript" src="/script/plugin-active.js"></script>
+       
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

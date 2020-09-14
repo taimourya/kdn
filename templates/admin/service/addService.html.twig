@@ -1,0 +1,93 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Admin DashBoard{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item active">Service</li>
+    <li class="breadcrumb-item active">
+        {% if editMode == 1 %}
+            Modifier
+        {% else %}
+            Ajouter
+        {% endif %}
+    </li>
+{% endblock %}
+
+{% block body %}
+
+    <div class="card mb-4 mt-5">
+        <div class="card-header">
+            <i class="fas fa-plus mr-1"></i>
+            {% if editMode == 1 %}
+                Modifier le service
+            {% else %}
+                Ajouter un nouveau service
+            {% endif %}
+        </div>
+        <div class="card-body">
+            <style>
+                .form_nvService label
+                {
+                    font-size: 1.3em;
+                }
+                .form_nvService input
+                {
+                    font-size: 1.1em;
+                }
+                .form_nvService
+                {
+                    padding-right: 300px;
+                    padding-left: 100px;
+                }
+            </style>
+            <div class="form_nvService">
+                {{form_start(form)}}
+                    <div class="row">
+                        <div class="col">
+                            {{ form_row(form.Name) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ form_row(form.description) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ form_row(form.price) }}
+                        </div>
+                        <div class="col">
+                            {{ form_row(form.page_number) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ form_row(form.caracteristiques) }}
+                        </div>
+                    </div>
+
+                    <div class="float-right">
+                        <a href="{{ path('admin_services') }}" class="btn btn-danger">
+                            <i class="fas fa-window-close"></i>
+                            Annuler
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-check"></i>
+                            {% if editMode == 1 %}
+                                Modifier
+                            {% else %}
+                                Ajouter
+                            {% endif %}
+                        </button>
+                    </div>
+                {{form_end(form)}}
+            </div>
+            
+        
+
+
+        </div>
+    </div>
+    
+
+{% endblock %}

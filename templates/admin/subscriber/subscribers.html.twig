@@ -1,0 +1,52 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Admin DashBoard{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item active">Abonnés</li>
+{% endblock %}
+
+{% block body %}
+
+    
+    
+
+    <div class="card mb-4 mt-5">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+            Liste des abonnés
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>email</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>email</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for subscriber in subscribers %}
+                            <tr>
+                                <td>{{ subscriber.email }}</td>
+                                <td>
+                                    <a href="{{ path('admin_removeSubscriber', {'subscriber':subscriber.id}) }}" class="btn btn-danger" onclick="return confirm('etes vous sure?')">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+
+{% endblock %}

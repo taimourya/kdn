@@ -1,0 +1,137 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Admin DashBoard{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item active">Commande</li>
+    <li class="breadcrumb-item active">Voir</li>
+{% endblock %}
+
+
+{% block body %}
+
+    
+
+    <div class="card mb-4 mt-5">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+                Commande N* {{ commande.id }}
+            <a href="{{ path('admin_commandes') }}" class="btn btn-primary float-right">
+                <i class="far fa-trash-alt"></i>
+                Retour
+            </a>
+        </div>
+        <div class="card-body">
+            <style>
+                .details_commande
+                {   
+                    text-align: justify;
+                    font-size: 1.1em;
+                }
+            </style>
+            <h3>Commande effectuée le <span style="color: rgb(76, 165, 197)">{{ commande.getCreatedAt|date('Y-m-d ; H:i') }}</span></h3>
+            <div class="row details_commande">
+
+                <div class="col-4">
+                    <h4>Etat : </h4> 
+                </div>
+                <div class="col-8">
+                    <p>{{ commande.stat }}</p>
+                </div>
+                <div class="col-4">
+                    <h4>Nom : </h4>
+                </div>
+                <div class="col-8">
+                    <p>{{ commande.getClientLastname }}</p>
+                </div>
+                <div class="col-4">
+                    <h4>Prenom : </h4>
+                </div>
+                <div class="col-8">
+                    <p>{{ commande.getClientFirstname }}</p>
+                </div>
+                <div class="col-4">
+                    <h4>Téléphone : </h4>
+                </div>
+                <div class="col-8">
+                    <p>{{ commande.phone }}</p>
+                </div>
+                <div class="col-4">
+                    <h4>Email : </h4>
+                </div>
+                <div class="col-8">
+                    {{ commande.email }}
+                </div>
+                <div class="col-4">
+                    <h4>Template : </h4>
+                </div>
+                <div class="col-8">
+                    <p>{{ commande.template.name }}</p>
+                </div>
+                <div class="col-4">
+                    <h4>Description : </h4> 
+                </div>
+                <div class="col-8">
+                    <p>{{ commande.template.description }}</p>
+                </div>
+                <div class="col-4">
+                    <h4>avec hebergement : </h4>
+                </div>
+                <div class="col-8">
+                    <p>
+                        {% if commande.getWithHost == 1 %}
+                            Oui
+                        {% else %}
+                            Non
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-4">
+                    <h4>maitenance : </h4>
+                </div>
+                <div class="col-8">
+                    <p>
+                    {% if commande.getWithMaintenance == 1 %}
+                        2 mois
+                    {% else %}
+                        2 semaine
+                    {% endif %}
+                    </p>
+                </div>
+                <div class="col-4">
+                    <h4>avec newsletter : </h4>
+                </div>
+                <div class="col-8">
+                    <p>
+                        {% if commande.getWithNewsletter == 1 %}
+                            Oui
+                        {% else %}
+                            Non
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-4">
+                    <h3>Total : </h3> 
+                </div>
+                <div class="col-8">
+                    <h4>
+                        {{ total }} DH
+                    </h4>
+                </div>
+
+            </div>
+            <div class="mt-4 float-right">
+                <a href="{{ path('admin_annulerCommande', {'commande':commande.id}) }}" class="btn btn-danger mr-3" onclick="return confirm('etes vous sure?')">
+                    Annuler
+                    <i class="fas fa-trash"></i>
+                </a>
+                <a href="{{ path('admin_validerCommande', {'commande':commande.id}) }}" class="btn btn-success float-right">
+                    Valider
+                    <i class="fas fa-check"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+
+{% endblock %}

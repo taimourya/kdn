@@ -1,0 +1,53 @@
+{% extends 'base_vide.html.twig' %}
+
+{% block title %}Connectez vous{% endblock %}
+
+
+
+{% block body %}
+
+    
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Connectez vous</h3></div>
+                                <div class="card-body">
+                                    {% if error %}    
+                                        <div class="alert alert-danger">
+                                            Information Incorrect
+                                        </div>
+                                    {%  endif %}
+                                    <form action="{{path('user_login')}}" method="post">
+                                        <div class="form-group">
+                                            <label class="small mb-1" for="inputEmailAddress">Username</label>
+                                            <input id="username" name="_username" type="text" value="{{ username }}" placeholder="username" class="form-control py-4" placeholder="User Name">
+                                        </div>
+                                        <div class="form-group mb-5">
+                                            <label class="small mb-1" for="inputPassword">Mot de passe</label>
+                                            <input id="password" name="_password" type="password" value="" placeholder="password" class="form-control py-4" placeholder="Password">
+                                        </div>
+                                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                            <a class="small" href="password.html">Mot de passe oublier?</a>
+                                            <button type="submit" class="btn btn-primary">Connexion</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <div class="small"><a href="register.html">Besoin d'un compte? contactez un admin</a></div>
+                                    <div class="small"><a href="{{ path('home') }}" class="btn btn-primary mt-3">Accueil</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+
+
+{% endblock %}

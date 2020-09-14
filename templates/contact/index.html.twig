@@ -1,0 +1,72 @@
+{% extends 'base_hero.html.twig' %}
+
+{% block title %}Contactez nous{% endblock %}
+
+{% block title_hero %}Contactez nous{% endblock %}
+
+{% block menu_contact %}
+    active
+{% endblock %}
+
+
+{% block body %}
+
+    <!-- si un message est envoyer via contact us -->
+    {% if message_recu == 1 %}
+        <div class="alert alert-success fixed-bottom text-center" id="message_alert" role="alert" style="height: 70px; margin-bottom: 0; font-size: 1.3em; opacity: 0.8;">
+            Votre message est envoyée !
+        </div>
+        <script>
+            setTimeout(
+            function() 
+            {
+                $("#message_alert").css('display', 'none');
+            }, 3000);
+        </script>
+    {% endif %}
+    
+    <!-- Contact us section starts here -->
+    <section id="ContactUs">
+        <div class="container contact-container">
+            <h3 class="contact-title">Contacte nous</h3>
+            <div class="contact-outer-wrapper">
+                <div class="address-block">
+                    <p class="add-title">Contact Details</p>
+                    <div class="c-detail">
+                        <span class="c-icon"><i class="fa fa-phone" aria-hidden="true"></i></span> <span class="c-info">+212643334135</span>
+                    </div>
+                    <div class="c-detail">
+                        <span class="c-icon"><i class="fa fa-envelope" aria-hidden="true"></i></span> <span class="c-info">taimouriya@gmail.com</span>
+                    </div>
+                </div>
+                <div class="form-wrap">
+                    <p class="add-title">Envoyez nous un message</p>
+
+                    {{ form_start(contact_form) }}
+                        <div class="fname floating-label">
+                            {{ form_row(contact_form.lastname) }}
+                        </div>
+                        <div class="email floating-label">
+                            {{ form_row(contact_form.firstname) }}
+                        </div>
+                        <div class="contact floating-label">
+                            {{ form_row(contact_form.email) }}
+                        </div>
+                        <div class="company floating-label">
+                            {{ form_row(contact_form.subject) }}
+                        </div>
+                        <div class="user-msg floating-label">
+                            {{ form_row(contact_form.message) }}
+                        </div>
+                        <div class="submit-btn">
+                            <button type="submit">Submit</button>
+                        </div>
+                    {{ form_end(contact_form) }}
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact us section ends here -->
+
+{% endblock %}
